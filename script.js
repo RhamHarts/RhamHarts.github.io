@@ -19,3 +19,26 @@ navLinks.forEach((l) => {
     new bootstrap.Collapse(menuToggle).toggle();
   });
 });
+
+
+ // Function to handle image zoom
+ document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll(".carousel-item img, .card-img-top");
+
+  images.forEach((img) => {
+      img.addEventListener("click", function () {
+          const zoomOverlay = document.createElement("div");
+          zoomOverlay.classList.add("zoom-overlay");
+
+          const zoomedImg = document.createElement("img");
+          zoomedImg.src = img.src;
+
+          zoomOverlay.appendChild(zoomedImg);
+          document.body.appendChild(zoomOverlay);
+
+          zoomOverlay.addEventListener("click", function () {
+              document.body.removeChild(zoomOverlay);
+          });
+      });
+  });
+});
